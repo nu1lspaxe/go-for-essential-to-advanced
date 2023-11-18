@@ -1,0 +1,7 @@
+go 1.20
+
+use (
+	./Go
+	./Go/src/advanced
+	./Go/src/mini
+)

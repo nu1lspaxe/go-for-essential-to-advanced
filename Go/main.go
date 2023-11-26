@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	advanced.MultiChannel()
+	advanced.FetchUrl()
 }

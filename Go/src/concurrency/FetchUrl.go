@@ -1,4 +1,12 @@
-package advanced
+/*
+	ch chan data : 從 channel 寫入/讀取 數據
+	ch chan <- data : 從 channel 寫入 數據
+	ch <- chan data : 從 channel 讀取 數據
+
+	用 channel 必須使用 sync.WaitGroup -> 否則造成 fatal error: all goroutines are asleep - deadlock!
+*/
+
+package concurrency
 
 import (
 	"fmt"
@@ -8,14 +16,6 @@ import (
 	"sync"
 	"time"
 )
-
-/*
-	ch chan data : 從 channel 寫入/讀取 數據
-	ch chan <- data : 從 channel 寫入 數據
-	ch <- chan data : 從 channel 讀取 數據
-
-	用 channel 必須使用 sync.WaitGroup -> 否則造成 fatal error: all goroutines are asleep - deadlock!
-*/
 
 func FetchUrl() {
 	ch := make(chan string)

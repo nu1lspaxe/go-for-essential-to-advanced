@@ -1,9 +1,9 @@
 package main
 
 import (
-	advanced "advanced"
+	concurrency "concurrency"
 )
 
 func main() {
-	advanced.FetchUrl()
+	concurrency.FetchUrl()
 }

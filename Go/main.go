@@ -1,9 +1,17 @@
 package main
 
 import (
-	ctxW "ctxWith"
+	advanced "advanced"
+	"fmt"
+	"reflect"
 )
 
 func main() {
-	ctxW.RunWithValue()
+	advanced.RunPrint()
+
+	test := "dsfa"
+
+	if !reflect.ValueOf(test).IsZero() {
+		fmt.Println("hi")
+	}
 }

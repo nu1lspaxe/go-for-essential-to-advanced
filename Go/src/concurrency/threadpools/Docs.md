@@ -7,7 +7,7 @@
 
 <br>
 
-# Concept : WaitGroup, Channel, Multi Goroutine
+## Concept : WaitGroup, Channel, Multi Goroutine
 - WaitGroup: Multiple goroutine conduct a same task
 - Channel + Select: 主動通知停止
 

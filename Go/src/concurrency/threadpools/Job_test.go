@@ -36,7 +36,7 @@ func TestJobExecute(t *testing.T) {
 		args       interface{}
 	}
 
-	// Anonymous struct 使用 (匿名結構目的: 僅使用這次)
+	// Anonymous struct 使用 (匿名結構目的: 僅使用一次)
 	tests := []struct {
 		name   string // Test case name
 		fields fields // Job for this test

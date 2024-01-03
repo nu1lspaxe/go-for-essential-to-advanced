@@ -7,4 +7,5 @@ use (
 	./Go/src/concurrency/threadpools
 	./Go/src/ctxWith
 	./Go/src/mini
+	./Go/src/chatroom
 )

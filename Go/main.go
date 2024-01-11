@@ -1,9 +1,14 @@
 package main
 
 import (
-	chatroom "chatroom"
+	"fmt"
+	"strings"
+
+	_ "github.com/joho/godotenv"
 )
 
 func main() {
-	chatroom.RunChatroom()
+
+	str := "hihihi"
+	fmt.Println(strings.Split(str, ""))
 }

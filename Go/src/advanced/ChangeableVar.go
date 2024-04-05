@@ -24,3 +24,31 @@ func ChangeableVar() {
 	buy("John", "Apple", "Orange")
 
 }
+
+// Builder
+type Item struct {
+	Id    int
+	Value string
+}
+
+type ItemDef func(*Item)
+
+func SetId(id int) ItemDef {
+	return func(it *Item) {
+		it.Id = id
+	}
+}
+
+func SetValue(value string) ItemDef {
+	return func(it *Item) {
+		it.Value = value
+	}
+}
+
+func NewItem(options ...ItemDef) *Item {
+	item := new(Item)
+	for _, opt := range options {
+		opt(item)
+	}
+	return item
+}

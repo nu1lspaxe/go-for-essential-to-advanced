@@ -19,7 +19,7 @@
 
 */
 
-package advanced
+package generic
 
 import (
 	"fmt"

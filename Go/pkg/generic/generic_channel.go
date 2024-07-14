@@ -1,16 +1,15 @@
-package concurrency
+package generic
 
 import (
-	advanced "advanced"
 	"fmt"
 )
 
-func channelGenerate[T advanced.Int32AndFloat32]() chan T {
+func channelGenerate[T Int32AndFloat32]() chan T {
 	ch := make(chan T)
 	return ch
 }
 
-func sum[T advanced.Int32AndFloat32](ch chan T, nums []T) {
+func sum[T Int32AndFloat32](ch chan T, nums []T) {
 	var result T
 	for _, num := range nums {
 		result += num

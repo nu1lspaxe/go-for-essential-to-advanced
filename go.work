@@ -2,10 +2,9 @@ go 1.20
 
 use (
 	./Go
-	./Go/src/advanced
-	./Go/src/concurrency
-	./Go/src/concurrency/threadpools
-	./Go/src/ctxWith
-	./Go/src/mini
-	./Go/src/chatroom
+	./Go/pkg/advanced
+	./Go/pkg/concurrency
+	./Go/pkg/concurrency/threadpools
+	./Go/pkg/ctx
+	./Go/pkg/chatroom
 )

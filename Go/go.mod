@@ -1,3 +1,3 @@
-module src
+module pkg
 
 go 1.20

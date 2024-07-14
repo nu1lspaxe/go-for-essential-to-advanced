@@ -2,7 +2,7 @@
 	泛型結構的方法本身不能加入泛型參數，但可以沿用結構的泛型參數，因此結構初始化時，也必須填入泛型引數。
 */
 
-package advanced
+package generic
 
 import (
 	"fmt"

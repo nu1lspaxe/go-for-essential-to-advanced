@@ -1,9 +1,9 @@
 package main
 
 import (
-	// concurrency "concurrency"
-	advanced "advanced"
 	"fmt"
+
+	"github.com/nu1lspaxe/go-for-essential-to-advanced/Go/advanced"
 )
 
 func main() {

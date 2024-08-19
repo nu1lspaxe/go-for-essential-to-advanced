@@ -1,10 +1,11 @@
-go 1.21.6
+go 1.22.5
 
 use (
-	./Go
-	./Go/pkg/advanced
-	./Go/pkg/chatroom
-	./Go/pkg/concurrency
-	./Go/pkg/concurrency/threadpools
-	./Go/pkg/ctx
+    ./Go
+    ./Go/advanced
+    ./Go/chatroom
+    ./Go/concurrency
+    ./Go/concurrency/threadpools
+    ./Go/ctx
+    ./Go/generic
 )

@@ -31,7 +31,15 @@
 
 <br>
 
-# Useful third part packages
+# Flags
+Add flag `-gcflags=-m` to get the information of **escape analysis**
+```bash=
+go build -gcflags=-m main.go
+```
+
+<br>
+
+# Useful third-party packages
 
 ### strings
 

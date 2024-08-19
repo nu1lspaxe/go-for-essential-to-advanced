@@ -32,9 +32,18 @@
 <br>
 
 # Flags
-Add flag `-gcflags=-m` to get the information of **escape analysis**
+- **escape analysis**
 ```bash=
 go build -gcflags=-m main.go
+```
+- Run benchmark testing
+```bash=
+go test -bench .
+```
+- Detect data race
+```bash=
+go run -race .
+go test -race ./...
 ```
 
 <br>

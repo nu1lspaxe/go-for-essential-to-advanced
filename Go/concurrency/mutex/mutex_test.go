@@ -26,6 +26,7 @@ func MutexBenchmark(b *testing.B, rw RW, read, write int) {
 	}
 }
 
+// RWMutex : Mutex = 10 : 1
 func BenchmarkReadMore(b *testing.B) {
 	MutexBenchmark(b, &Lock{}, 9, 1)
 }
@@ -33,6 +34,8 @@ func BenchmarkReadMore(b *testing.B) {
 func BenchmarkReadMoreRW(b *testing.B) {
 	MutexBenchmark(b, &RWLock{}, 9, 1)
 }
+
+// RWMutex : Mutex = 1 : 1
 
 func BenchmarkWriteMore(b *testing.B) {
 	MutexBenchmark(b, &Lock{}, 1, 9)
@@ -42,6 +45,7 @@ func BenchmarkWriteMoreRW(b *testing.B) {
 	MutexBenchmark(b, &RWLock{}, 1, 9)
 }
 
+// RWMutex : Mutex = 2 : 1
 func BenchmarkEqual(b *testing.B) {
 	MutexBenchmark(b, &Lock{}, 5, 5)
 }

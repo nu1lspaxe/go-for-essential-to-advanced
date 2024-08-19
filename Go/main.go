@@ -1,15 +1,11 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/nu1lspaxe/go-for-essential-to-advanced/Go/advanced"
+	_ "github.com/nu1lspaxe/go-for-essential-to-advanced/Go/advanced"
+	_ "github.com/nu1lspaxe/go-for-essential-to-advanced/Go/context"
+	"github.com/nu1lspaxe/go-for-essential-to-advanced/Go/graceful"
 )
 
 func main() {
-	itOne := advanced.NewItem(advanced.SetId(0), advanced.SetValue("C#"))
-	itTwo := advanced.NewItem(advanced.SetId(1))
-
-	fmt.Println(itOne)
-	fmt.Println(itTwo)
+	graceful.Run()
 }

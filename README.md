@@ -1,9 +1,6 @@
-# VS Code Tips
-- `shift + F9`: debug inline
+# Go for essential to Advanced
 
-<br>
-
-# Quick Guide on logging and Error Handling
+## Quick Guide on logging and Error Handling
 
 #### Logging or others
 - `log.Print`: General purpose logging of information. Doesn't terminate.
@@ -13,7 +10,6 @@
 - `log.Panicf`: Same as Panic but allows formatting.
 - `fmt.Errorf`: Returns an error object. Doesn't log or terminate. Used to return errors.
 - `errors.New`: Same as Errorf but without formatting.
-
 
 #### For testing
 - `t.Error`: Logs an error but continues test execution.
@@ -29,9 +25,9 @@
 - **t.Error | t.Errorf** to log errors but continue tests
 - **t.Fatal | t.Fatalf** to log and fail fast during tests
 
-<br>
+---
 
-# Flags
+## Flags
 - **escape analysis**
 ```bash=
 go build -gcflags=-m main.go
@@ -50,9 +46,9 @@ go test -race ./...
 //go:linkname localname [importpath.name]
 ```
 
-<br>
+---
 
-# Useful third-party packages
+## Useful third-party packages
 
 ### strings
 

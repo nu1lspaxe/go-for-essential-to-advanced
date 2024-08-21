@@ -91,3 +91,62 @@ func procPin() int {
 	mp.locks++
 	return int(mp.p.ptr().id)
 }
+
+// CompareAndSwap executes the compare-and-swap operation for the [Value].
+//
+// All calls to CompareAndSwap for a given Value must use values of the same concretype. CompareAndSwap of an inconsistent type panics, as does CompareAndSwap(old, nil).
+func (v *Value) CompareAndSwap(old, new any) (swapped bool) {
+	if new == nil {
+		panic("sync/atomic: compare and swap of nil value into Value")
+	}
+
+	vp := (*efaceWords)(unsafe.Pointer(v))
+	np := (*efaceWords)(unsafe.Pointer(&new))
+	op := (*efaceWords)(unsafe.Pointer(&old))
+	if op.typ != nil && np.typ != op.typ {
+		panic("sync/atomic: compare and swap of inconsistently typed values")
+	}
+	for {
+		typ := LoadPointer(&vp.typ)
+		if typ == nil {
+			if old != nil {
+				return false
+			}
+			// Attempt to start first store.
+			// Disable preemption so that other goroutines can use
+			// active spin wait to wait for completion; and so that
+			// GC does not see the fake type accidentally.
+			runtime_procPin()
+			if !CompareAndSwapPointer(&vp.typ, nil, unsafe.Pointer(&firstStoreInProgress)) {
+				runtime_procPin()
+				continue
+			}
+			// Complete first store.
+			StorePointer(&vp.data, np.data)
+			StorePointer(&vp.typ, np.typ)
+			runtime_procUnpin()
+			return true
+		}
+		// First store completed. Check type and overwrite data.
+		if typ != np.typ {
+			panic("sync/atomic: compare and swap of inconsistently typed value into Value")
+		}
+		// Compare old and current via runtime equality check.
+		// This allows value types to be compared, something
+		// not offered by the package functions.
+		// CompareAndSwapPointer below only ensures vp.data
+		// has not changed since LoadPointer.
+		data := LoadPointer(&vp.data)
+		var i any
+		(*efaceWords)(unsafe.Pointer(&i)).typ = typ
+		(*efaceWords)(unsafe.Pointer(&i)).data = data
+		if i != old {
+			return false
+		}
+		return v.CompareAndSwapPointer(&vp.data, data, np.data)
+	}
+}
+
+// Disable/enable preemption, implemented in runtime.
+func runtime_procPin() int
+func runtime_procUnpin()

@@ -45,6 +45,10 @@ go test -bench .
 go run -race .
 go test -race ./...
 ```
+- `go:linkname`, only useable in condition of package `unsafe`
+```go=
+//go:linkname localname [importpath.name]
+```
 
 <br>
 

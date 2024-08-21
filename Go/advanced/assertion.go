@@ -4,6 +4,11 @@ import (
 	"fmt"
 )
 
+// type interface struct {
+// 	Type uintptr
+// 	Data uintptr
+// }
+
 func getType(item interface{}) {
 	switch item.(type) {
 	case int:

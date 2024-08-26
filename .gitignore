@@ -25,3 +25,6 @@ go.work.sum
 .env
 
 .vscode
+
+# gvm: go mod place
+Go/source/pkg/*

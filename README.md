@@ -27,7 +27,7 @@
 
 ---
 
-## Flags
+### Flags
 - **escape analysis**
 ```bash=
 go build -gcflags=-m main.go
@@ -41,10 +41,14 @@ go test -bench .
 go run -race .
 go test -race ./...
 ```
-- `go:linkname`, only useable in condition of package `unsafe`
+
+### Compile
+- `//go:linkname`, only useable in condition of package `unsafe`
 ```go=
 //go:linkname localname [importpath.name]
 ```
+- `//go:noescape`
+- `//go:nosplit`
 
 ---
 
@@ -63,3 +67,9 @@ go test -race ./...
     
 	fmt.Println(str)    // Hi, I'm Tinaaa, Help.... me..)
     ```
+
+---
+
+## Resources
+- [The Go Programming Language Specification 1.23](https://tip.golang.org/ref/spec)
+- [A Guide to the Go Garbage Collector](https://tip.golang.org/doc/gc-guide)

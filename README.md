@@ -61,8 +61,9 @@ go test -race ./...
 //go:linkname localname [importpath.name]
 ```
 
-- `//go:noescape`
-- `//go:nosplit`
+- `//go:noescape`, prevent variables escape to heap
+- `//go:nosplit`, disable stack splitting
+- `//go:inline`
 
 ---
 

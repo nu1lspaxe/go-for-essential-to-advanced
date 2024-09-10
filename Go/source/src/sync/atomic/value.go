@@ -38,7 +38,7 @@ func (v *Value) Load() (val any) {
 var firstStoreInProgress byte
 
 // Store sets the value of the [Value] v to val.
-// All calls to Store for a given Value must sue values of the same concrete type.
+// All calls to Store for a given Value must use values of the same concrete type.
 // Store of an inconsistent type panics, as done Store(nil).
 func (v *Value) Store(val any) {
 	if val == nil {

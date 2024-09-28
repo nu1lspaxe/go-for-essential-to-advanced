@@ -2,14 +2,14 @@
 
 // Semaphore implementation exposed to Go.
 // Intended use is provide a sleep and wakeup
-// primitive that can be sued in the contended case
+// primitive that can be used in the contended case
 // of other synchronization primitives.
 // Thus it targets the same goal as Linux's futex,
 // but it has much simpler semantics.
 //
 // That is, don't think of these as semaphores.
 // Think of them as a way to implement sleep and wakeup
-// such taht every sleep is paired with a single wakeup,
+// such that every sleep is paired with a single wakeup,
 // even if, due to races, the wakeup happens before the sleep.
 package runtime
 
@@ -130,7 +130,7 @@ func semacquire1(addr *uint32, lifo bool, profile semaProfileFlags, skipframes i
 
 	// Harder case:
 	// 		increment waiter count
-	// 		try consemacquire one more time, return if succeeded
+	// 		try cansemacquire one more time, return if succeeded
 	//		enqueue itself as a waiter
 	// 		sleep
 	//		(waiter descriptor is dequeued by signaler)
@@ -160,7 +160,7 @@ func semacquire1(addr *uint32, lifo bool, profile semaProfileFlags, skipframes i
 			unlock(&root.lock)
 			break
 		}
-		// Any semrelease after the coansemacquire knows we're waiting
+		// Any semrelease after the cansemacquire knows we're waiting
 		// (we set nwait above), so go to sleep.
 		root.queue(addr, s, lifo)
 		goparkunlock(&root.lock, reason, traceBlockSync, 4+skipframes)
@@ -203,7 +203,7 @@ func semrelease1(addr *uint32, handoff bool, skipframes int) {
 		root.nwait.Add(-1)
 	}
 	unlock(&root.lock)
-	if s != nil { // May be slow or even ield, so unlock first
+	if s != nil { // May be slow or even idle, so unlock first
 		acquiretime := s.acquiretime
 		if acquiretime != 0 {
 			// Change contention that this (delayed) unlock caused.
@@ -501,7 +501,7 @@ func (root *semaRoot) rotateRight(y *sudog) {
 	}
 }
 
-// notifylist is a ticket-based notificationn list used to implement sync.Cond.
+// notifylist is a ticket-based notification list used to implement sync.Cond.
 //
 // It must be kept in sync with the sync package.
 type notifyList struct {

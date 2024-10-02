@@ -11,26 +11,26 @@ Binary Search Tree (BST)
 4. In-Order Traversal
 */
 
-// Node represents a node in the binary search tree
-type Node struct {
+// Node_BST represents a node in the binary search tree
+type Node_BST struct {
 	Value int
-	Left  *Node
-	Right *Node
+	Left  *Node_BST
+	Right *Node_BST
 }
 
 // Insert adds a new node to the binary search tree
-func (n *Node) Insert(value int) {
+func (n *Node_BST) Insert(value int) {
 	if value <= n.Value {
 		// Insert in the left subtree
 		if n.Left == nil {
-			n.Left = &Node{Value: value}
+			n.Left = &Node_BST{Value: value}
 		} else {
 			n.Left.Insert(value)
 		}
 	} else {
 		// Insert in the right subtree
 		if n.Right == nil {
-			n.Right = &Node{Value: value}
+			n.Right = &Node_BST{Value: value}
 		} else {
 			n.Right.Insert(value)
 		}
@@ -38,7 +38,7 @@ func (n *Node) Insert(value int) {
 }
 
 // Search checks if a value exists in the binary search tree
-func (n *Node) Search(value int) bool {
+func (n *Node_BST) Search(value int) bool {
 	if n == nil {
 		return false
 	}
@@ -56,7 +56,7 @@ func (n *Node) Search(value int) bool {
 }
 
 // InOrderTraversal prints the nodes in the binary search tree
-func (n *Node) InOrderTraversal() {
+func (n *Node_BST) InOrderTraversal() {
 	if n == nil {
 		return
 	}
@@ -66,7 +66,7 @@ func (n *Node) InOrderTraversal() {
 }
 
 func BinarySearchTree() {
-	root := &Node{Value: 10}
+	root := &Node_BST{Value: 10}
 
 	root.Insert(5)
 	root.Insert(15)

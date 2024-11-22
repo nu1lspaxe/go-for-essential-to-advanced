@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/nu1lspaxe/go-for-essential-to-advanced/Go/algorithm"
+	memorymanagement "github.com/nu1lspaxe/go-for-essential-to-advanced/Go/memory_management"
 )
 
 func main() {
-	algorithm.AVLTree()
+	memorymanagement.RunPprof()
 }

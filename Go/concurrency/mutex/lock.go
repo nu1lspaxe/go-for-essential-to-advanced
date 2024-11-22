@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+// The sync.Mutex does not differentiate between read and write
+// operations. Each lock acquisition will block all other operations,
+// resulting in relatively low performance.
+
 type RW interface {
 	Write()
 	Read()

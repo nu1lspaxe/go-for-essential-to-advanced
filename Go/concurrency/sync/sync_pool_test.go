@@ -7,6 +7,11 @@ import (
 	"testing"
 )
 
+// sync.Pool is to manage high-frequency, short-lived
+// objects, such as temporary buffers or structs.
+// By reducing the overhead of frequent memory allocation
+// and deallocation, sync.Pool can effectively enhance performance.
+
 type Student struct {
 	Name   string
 	Age    int32

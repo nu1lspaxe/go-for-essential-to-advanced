@@ -89,4 +89,3 @@ go test -race ./...
 ## Resources
 
 - [The Go Programming Language Specification 1.23](https://tip.golang.org/ref/spec)
-- [A Guide to the Go Garbage Collector](https://tip.golang.org/doc/gc-guide)
